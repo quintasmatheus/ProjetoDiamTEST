@@ -1,0 +1,205 @@
+*{
+    margin-left: 0;
+    padding: 0;
+    margin:0;
+    box-sizing: border-box;
+}
+
+body{
+    background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
+    font-family: "Candara";
+    min-height: 100vh;
+     overflow-x: hidden;
+    overflow-y: hidden;
+}
+/* nav bar*/
+nav{
+    position: fixed;
+    margin-top: -10px;
+    width: 100%;
+    height: 15vh;
+}
+
+#titulo {
+  position: absolute;
+  top: 2vh;
+  left: 90vh;
+  color: beige;
+  font-size: 5rem;
+  z-index: 1;
+}
+/*animated hamburger animation */
+.hamburger-menu{
+    height: 100px;
+    width: 100px;
+    background-color: #273036;
+    position: fixed;
+    top: 1rem;
+    cursor:pointer;
+}
+
+.ham-bar{
+    width: 70%;
+    height: 10px;
+    background-color: beige;
+    border-radius:25px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition:transform .6s, opacity .8s, top .6s;
+}
+
+.bar-top{
+top: 25%;
+}
+.bar-bottom{
+top: 75%;
+}
+
+.hamburger-menu.active .bar-top{
+transform: translate(-50%, -50%) rotate(-315deg);
+    background-color:beige;
+    top: 50%;
+}
+.hamburger-menu.active .bar-mid{
+    opacity: 0;
+}
+.hamburger-menu.active .bar-bottom{
+transform: translate(-50%, -50%) rotate(-225deg);
+     background-color: beige;
+    top: 50%;
+}
+/* off screen animation*/
+.off-screen-menu{
+    position: fixed;
+    top: 0;
+    left: -20%;
+     background-color: beige;
+    height: 100vh;
+    width: 20%;
+    transition:left .5s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items:center;
+    gap: 20px;
+}
+
+.off-screen-menu.active{
+    left: 0;
+}
+
+.off-screen-menu a{
+    font-size: 3rem;
+}
+
+/* hero section*/
+
+/* .hero{
+    position:absolute;
+    background-color: transparent;
+    height: 30vh;
+    width: 70%;
+    top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+grid-template-rows: 1fr;
+grid-column-gap: 30px;
+grid-row-gap: 0px;
+    font-size: 1.8rem;
+}
+*/
+
+.hero {
+    position: absolute;
+    background-color: transparent;
+    height: 30vh;
+    width: 70%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 100px;
+    grid-row-gap: 0px;
+    font-size: 1.8rem;
+}
+
+.hero article{
+    color: #273036;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
+    font-size: 38px;
+background-color: rgba(245,245,220, 0.95);
+border-radius: 28px;
+border: 1px solid rgba(209, 213, 219, 0.18);
+}
+
+.article.active {
+    z-index: -1;
+}
+
+.hero p{
+    margin-top: 20px;
+    margin-bottom: -40px;
+    margin-left: 20px;
+    margin-right: 20px;
+
+}
+
+.hero button{
+    display: inline-block;
+    padding: 10px 30px;
+    background: #273036;
+    margin-left: 25%;
+    height: 5vh;
+    margin-top: 65px;
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Koulen&family=Lato&family=Nunito&family=Playfair+Display:ital@1&family=Prata&family=Raleway:ital,wght@1,100&family=Roboto&family=Roboto+Condensed&family=Teko&display=swap');
+
+.heroButton{
+font-size: 20px;
+color:beige;
+background-color: #000000;
+border: none;
+border-radius: 0px 0px 50px 50px;
+transition : 216ms;
+transform: translateY(0);
+display: flex;
+flex-direction: row;
+align-items: center;
+cursor: pointer;
+text-transform: uppercase;
+}
+
+.heroButton:hover{
+transition : 216ms;
+padding: 10px 48px;
+transform : translateY(-5px) translateX(-5px);
+}
+
+.middle-photo{
+    clip-path: polygon(50% 0%, 83% 12%, 100% 46%, 94% 83%, 68% 106%, 32% 100%, 6% 78%, 0% 43%, 17% 12%);
+    transition: transform 1s ease-in-out;
+
+}
+
+.middle-photo:hover{
+transform: rotate(360deg);
+}
+
+#link{
+   text-decoration: none;
+    all: unset;
+
+}
+
