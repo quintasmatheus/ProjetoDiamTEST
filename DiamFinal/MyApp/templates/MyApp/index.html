@@ -18,6 +18,7 @@
 
         <h1 id="titulo">UniRide</h1>
     </svg>
+
     <div class="hamburger-menu">
         <div class="ham-bar bar-top"></div>
          <div class="ham-bar bar-mid"></div>
@@ -26,26 +27,19 @@
    <!-- img id="navbar-button" src="{% static 'media/navigation-bar.png' %}" /> -->
 </nav>
 {% block content %} <!--colocar extends nas outras páginas, na primeira linha do html -->
-    <section class="hero">
-        <article class="article">
-            <p>Queres boleia para ir desde a tua terra até à tua universidade, ou queres companhia no teu carro e aproveitar para poupar combustível?
-            </p>
-            <button class="heroButton" id="want-ride">
-                <a id="link" href="loginOrRegister.html">
-                    Log in / Register
-            </a>
-                </button>
-        </article>
-        <img src="https://placehold.co/400" class="middle-photo">
+    <section class="searchBar">
+        <form class="searchBar">
+            <label class="search_label" for="partida">Local de Partida:</label>
+            <input class="search_inputs" type="text" id="partida" name="partida"><br><br>
 
-        <!--
-        <article class="right article">
-        <p>
-           Queres companhia no teu carro para fazer uma longa viajem para a tua universidade e aproveitas e poupas no combustível, cria uma conta.
-        </p>
-            <button class="heroButton" id="give-ride">I give you a RIDE</button>
-        </article>
-        -->
+            <label class="search_label" for="chegada">Local de Chegada:</label>
+            <input class="search_inputs" type="text" id="chegada" name="chegada"><br><br>
+
+            <button id="search_button" type="submit">Pesquisar</button>
+        </form>
+    </section>
+
+    <section class="anunciarRide">
 
     </section>
 {% endblock %}
