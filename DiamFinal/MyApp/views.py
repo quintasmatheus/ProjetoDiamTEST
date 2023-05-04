@@ -5,13 +5,11 @@ from .models import Boleia
 
 # Create your views here.
 
-def home(request):
-    template = loader.get_template('MyApp/index.html')
-    return HttpResponse(template.render())
-
-def boleias(request):
+def index(request):
     # consulta a base de dados para obter as boleias
     boleias = Boleia.objects.all()
 
-    # renderiza a página HTML com as boleias
-    return render(request, 'index.html', {'boleias': boleias})
+    # renderiza a página HTML com as boleias e outros dados de contexto
+    template = loader.get_template('index.html')
+    context = {'boleias': boleias}
+    return HttpResponse(template.render(context, request))
