@@ -9,4 +9,5 @@ app_name = 'MyApp'
 urlpatterns = [
     path('', views.index, name='index'),
     path('search/', views.search, name='search'),
+    path('reset/', views.reset, name='reset'),
 ]

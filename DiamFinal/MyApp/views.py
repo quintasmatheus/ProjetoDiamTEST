@@ -23,3 +23,7 @@ def search(request):
     #print(boleias)
     return render(request, 'MyApp/index.html', {'boleias': boleias})
 
+def reset(request):
+    boleias = Boleia.objects.all()
+    return render(request, 'MyApp/index.html', {'boleias': boleias})
+
