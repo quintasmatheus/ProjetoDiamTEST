@@ -10,3 +10,6 @@ class Boleia(models.Model):
     preco = models.DecimalField(max_digits=8, decimal_places=2)
     vagas = models.IntegerField()
     detalhes = models.TextField(blank=True)
+
+
+

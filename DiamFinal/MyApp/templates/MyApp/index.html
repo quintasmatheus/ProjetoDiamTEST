@@ -17,6 +17,11 @@
         <path fill="#273036" fill-opacity="1" d="M0,192L26.7,181.3C53.3,171,107,149,160,154.7C213.3,160,267,192,320,197.3C373.3,203,427,181,480,154.7C533.3,128,587,96,640,112C693.3,128,747,192,800,213.3C853.3,235,907,213,960,192C1013.3,171,1067,149,1120,154.7C1173.3,160,1227,192,1280,197.3C1333.3,203,1387,181,1413,170.7L1440,160L1440,0L1413.3,0C1386.7,0,1333,0,1280,0C1226.7,0,1173,0,1120,0C1066.7,0,1013,0,960,0C906.7,0,853,0,800,0C746.7,0,693,0,640,0C586.7,0,533,0,480,0C426.7,0,373,0,320,0C266.7,0,213,0,160,0C106.7,0,53,0,27,0L0,0Z"></path>
 
         <h1 id="titulo">UniRide</h1>
+
+        <section class="login_OR_register">
+            <button class="butoes_nav" id="login"> LOGIN</button>
+            <button class="butoes_nav" id="register">REGISTER</button>
+        </section>
     </svg>
 
     <div class="hamburger-menu">
@@ -28,19 +33,19 @@
 </nav>
 
     <section class="searchBar">
-        <form class="searchBar">
-            <label class="search_label" for="partida">Local de Partida:</label>
-            <input class="search_inputs" type="text" id="partida" name="partida"><br><br>
+    <form id="searchForm" class="searchBar" action="{% url 'MyApp:search' %}" method="get">
+        <label class="search_label" for="partida">Local de Partida:</label>
+        <input class="search_inputs" type="text" id="partida" name="partida"><br><br>
 
-            <label class="search_label" for="chegada">Local de Chegada:</label>
-            <input class="search_inputs" type="text" id="chegada" name="chegada"><br><br>
+        <label class="search_label" for="chegada">Local de Chegada:</label>
+        <input class="search_inputs" type="text" id="chegada" name="chegada"><br><br>
 
             <button id="search_button" type="submit">Pesquisar</button>
-        </form>
-    </section>
+    </form>
+</section>
 
 {% block content %}
-<section id="anuncios_table">
+<section id="anuncios_container">
     {% if boleias %}
         <table>
             <thead>

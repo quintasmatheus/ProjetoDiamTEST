@@ -70,17 +70,18 @@ class HoverAnim {
 const titulo = document.getElementById("titulo");
 new HoverAnim(titulo);
 
+//////////////////////////////////////////////////////////////////////
+//adicionar class active
 
 const hamMenu = document.querySelector('.hamburger-menu')
 const offScreenMenu = document.querySelector('.off-screen-menu');
-const articleZIndex = document.querySelector('.article');
 
 hamMenu.addEventListener('click', ()=>{
   hamMenu.classList.toggle('active');
   offScreenMenu.classList.toggle('active');
-  articleZIndex.classList.toggle('active');
 } )
 
+//////////////////////////////////////////////////////////////////////
 const table = document.querySelector('#anuncios_table table');
 const tbody = document.querySelector('#anuncios_table tbody');
 
@@ -99,6 +100,36 @@ window.addEventListener('load', ajustarAlturaTabela);
 
 // Chama a função sempre que a página é redimensionada
 window.addEventListener('resize', ajustarAlturaTabela);
+
+
+//////////////////////////////////////////////////////////////////////
+// searchbar implementation
+
+// const searchForm = document.getElementById('searchForm');
+// const searchButton = document.getElementById('search_button');
+//
+// searchForm.addEventListener('submit', (event) => {
+//         event.preventDefault(); // impede o envio do formulário padrão
+//         const formData = new FormData(searchForm); // obtém os dados do formulário
+//         const partida = formData.get('partida');
+//         const chegada = formData.get('chegada');
+//         const url = `./search/?partida=${partida}&chegada=${chegada}`; // constrói a URL de pesquisa
+//         fetch(url)
+//             .then(response => response.json())
+//             .then(data => {
+//                 // atualiza a tabela de boleias com os dados recebidos
+//                 const table = document.getElementById('boleiaTable');
+//                 table.innerHTML = ''; // limpa a tabela existente
+//                 data.forEach(boleia => {
+//                     const row = table.insertRow();
+//                     row.insertCell().innerHTML = boleia.id;
+//                     row.insertCell().innerHTML = boleia.partida;
+//                     row.insertCell().innerHTML = boleia.chegada;
+//                     // adicione outras células da tabela, se necessário
+//                 });
+//             })
+//             .catch(error => console.error(error));
+//     });
 
 
 

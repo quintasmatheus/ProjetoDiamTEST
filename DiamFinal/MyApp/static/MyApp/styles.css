@@ -26,6 +26,19 @@ nav{
   font-size: 5rem;
   z-index: 1;
 }
+
+.login_OR_register{
+    position: absolute;
+    top: 8vh;
+    left: 85%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.butoes_nav{
+
+}
 /*animated hamburger animation */
 .hamburger-menu{
     height: 100px;
@@ -112,94 +125,6 @@ grid-row-gap: 0px;
 }
 */
 
-.hero {
-    position: absolute;
-    background-color: transparent;
-    height: 30vh;
-    width: 70%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: 1fr;
-    grid-column-gap: 100px;
-    grid-row-gap: 0px;
-    font-size: 1.8rem;
-}
-
-.hero article{
-    color: #273036;
-    display: flex;
-    flex-wrap: wrap;
-    align-content: center;
-    align-items: center;
-    font-size: 38px;
-background-color: rgba(245,245,220, 0.95);
-border-radius: 28px;
-border: 1px solid rgba(209, 213, 219, 0.18);
-}
-
-.article.active {
-    z-index: -1;
-}
-
-.hero p{
-    margin-top: 20px;
-    margin-bottom: -40px;
-    margin-left: 20px;
-    margin-right: 20px;
-
-}
-
-.hero button{
-    display: inline-block;
-    padding: 10px 30px;
-    background: #273036;
-    margin-left: 25%;
-    height: 5vh;
-    margin-top: 65px;
-}
-
-
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Koulen&family=Lato&family=Nunito&family=Playfair+Display:ital@1&family=Prata&family=Raleway:ital,wght@1,100&family=Roboto&family=Roboto+Condensed&family=Teko&display=swap');
-
-.heroButton{
-font-size: 20px;
-color:beige;
-background-color: #000000;
-border: none;
-border-radius: 0px 0px 50px 50px;
-transition : 216ms;
-transform: translateY(0);
-display: flex;
-flex-direction: row;
-align-items: center;
-cursor: pointer;
-text-transform: uppercase;
-}
-
-.heroButton:hover{
-transition : 216ms;
-padding: 10px 48px;
-transform : translateY(-5px) translateX(-5px);
-}
-
-.middle-photo{
-    clip-path: polygon(50% 0%, 83% 12%, 100% 46%, 94% 83%, 68% 106%, 32% 100%, 6% 78%, 0% 43%, 17% 12%);
-    transition: transform 1s ease-in-out;
-
-}
-
-.middle-photo:hover{
-transform: rotate(360deg);
-}
-
-#link{
-   text-decoration: none;
-    all: unset;
-
-}
 
 /* form partida e chegada */
 
@@ -235,7 +160,7 @@ label, input, button {
     font-size:20px;
 }
 
-#search_button{
+button{
      padding: 9px;
      font-size: 15px;
      border-width: 2px;
@@ -244,7 +169,10 @@ label, input, button {
      color: #F5F5DC;
      border-style: double;
      border-radius: 50px;
-     box-shadow: 0px 0px 5px rgba(66,66,66,.75);
+}
+
+button:hover{
+    box-shadow: 0px 0px 5px rgba(66,66,66,.75);
      text-shadow: 5px 0px 5px rgba(255,255,255,.60);
 }
 
@@ -259,43 +187,43 @@ label, input, button {
 
 
 #anunciar:hover{
-    font-size: 19px;
     box-shadow: 0px 0px 5px rgba(66,66,66,.75);
      text-shadow: 5px 0px 5px rgba(255,255,255,.60);
 }
 
 /* anuncios table*/
 
-#anuncios_table {
-  border: 1px solid black;
+#anuncios_container {
+  position: relative;
+  margin: 0 auto;
   width: 500px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+    top: 45vh;
 }
 
-#anuncios_table table {
+#anuncios_container table {
   width: 100%;
   border-collapse: collapse;
+    position: absolute;
+    top: 0;
 }
 
-#anuncios_table th,
-#anuncios_table td {
+#anuncios_container th,
+#anuncios_container td {
   border: 1px solid black;
   padding: 0.5em;
   text-align: center;
 }
 
-#anuncios_table th {
+#anuncios_container th {
   background-color: #ccc;
 }
 
-#anuncios_table p {
+#anuncios_container p {
   text-align: center;
   font-size: 20px;
   margin-top: 7em;
 }
+
 
 
 
