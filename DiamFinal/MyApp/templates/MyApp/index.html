@@ -9,8 +9,8 @@
 </head>
 <body>
     <div class="off-screen-menu">
-        <a>About Us</a>
-        <a>Information</a>
+        <a href="{% url 'MyApp:aboutUs' %}">About Us</a>
+        <a href="{% url 'MyApp:information' %}">Information</a>
     </div>
 <nav>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 250">
@@ -32,6 +32,7 @@
    <!-- img id="navbar-button" src="{% static 'media/navigation-bar.png' %}" /> -->
 </nav>
 
+{% block content %}
     <section class="searchBar">
     <form id="searchForm" class="searchBar" action="{% url 'MyApp:search' %}" method="get">
         <label class="search_label" for="partida">Local de Partida:</label>
@@ -46,12 +47,13 @@
     </form>
 </section>
 
-{% block content %}
+
 <section id="anuncios_container">
     {% if boleias %}
         <table>
             <thead>
                 <tr>
+                   <!-- <th>User</th> -->
                     <th>Partida</th>
                     <th>Chegada</th>
                     <th>Horário</th>
@@ -63,6 +65,7 @@
             <tbody>
                 {% for boleia in boleias %}
                     <tr>
+                       <!--  <td>{{ boleia.user }}</td> -->
                         <td>{{ boleia.partida }}</td>
                         <td>{{ boleia.chegada }}</td>
                         <td>{{ boleia.horario }}</td>

@@ -19,11 +19,30 @@ def index(request):
 def search(request):
     partida = request.GET.get('partida')
     chegada = request.GET.get('chegada')
-    boleias = Boleia.objects.filter(partida__icontains=partida, chegada__icontains=chegada)
-    #print(boleias)
+
+    if partida and chegada:
+        # Filter Boleia objects using exact match on partida and chegada fields
+        boleias = Boleia.objects.filter(partida=partida, chegada=chegada)
+    else:
+        if partida:
+            boleias = Boleia.objects.filter(partida=partida)
+        else:
+            if chegada:
+                boleias = Boleia.objects.filter(chegada=chegada)
+
+            else:
+                # Fetch all Boleia objects
+                boleias = Boleia.objects.all()
+
     return render(request, 'MyApp/index.html', {'boleias': boleias})
+
 
 def reset(request):
     boleias = Boleia.objects.all()
     return render(request, 'MyApp/index.html', {'boleias': boleias})
 
+def about_view(request):
+    return render(request, 'MyApp/aboutUs.html')
+
+def information_view(request):
+    return render(request, 'MyApp/information.html')
