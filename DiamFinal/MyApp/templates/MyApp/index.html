@@ -9,6 +9,19 @@
     <script src="https://cdn.jsdelivr.net/npm/kute.js@2.2.2/dist/kute.min.js"></script>
 </head>
 <body>
+
+    {% if not user.is_authenticated %}
+        <section class="login_OR_register">
+            <a href="{% url 'MyApp:login' %}">
+                <button class="butoes_nav" id="login"> LOGIN</button>
+            </a>
+            <a href="{% url 'MyApp:register' %}">
+                <button class="butoes_nav" id="register">REGISTER</button>
+            </a>
+        </section>
+    {% endif %}
+
+
     <div class="off-screen-menu">
         <a href="{% url 'MyApp:aboutUs' %}">About Us</a>
         <a href="{% url 'MyApp:information' %}">Information</a>
@@ -19,21 +32,14 @@
 
         <h1 id="titulo">UniRide</h1>
 
-        <section class="login_OR_register">
-            <button class="butoes_nav" id="login"> LOGIN</button>
-            <button class="butoes_nav" id="register">REGISTER</button>
-        </section>
     </svg>
 
-    <div class="hamburger-menu">
-        <div class="ham-bar bar-top"></div>
-         <div class="ham-bar bar-mid"></div>
-         <div class="ham-bar bar-bottom"></div>
-    </div>
    <!-- img id="navbar-button" src="{% static 'media/navigation-bar.png' %}" /> -->
 </nav>
 
 {% block content %}
+
+    {% if user.is_authenticated %}
     <section class="searchBar">
     <form id="searchForm" class="searchBar" action="{% url 'MyApp:search' %}" method="get">
         <label class="search_label" for="partida">Local de Partida:</label>
@@ -49,7 +55,7 @@
 </section>
 
 
-<section id="anuncios_container">
+<div class="table-anuncios">
     {% if boleias %}
         <table>
             <thead>
@@ -80,7 +86,7 @@
     {% else %}
         <p style="text-align: center; font-size: 20px; margin-top: 1em; margin-bottom: 1em; position: absolute">Não existem boleias disponíveis.</p>
     {% endif %}
-</section>
+</div>
 
  <!--colocar extends nas outras páginas, na primeira linha do html -->
 <!--    <svg id="blop" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">-->
@@ -119,7 +125,7 @@
         </script>
     </section>
     <div class="spacer layer2"></div>
-
+{% endif %}
 {% endblock %}
 <script src="{% static 'MyApp/scripts.js' %}" type="application/javascript"></script>
 </body>
