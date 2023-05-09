@@ -22,13 +22,13 @@ def search(request):
 
     if partida and chegada:
         # Filter Boleia objects using exact match on partida and chegada fields
-        boleias = Boleia.objects.filter(partida=partida, chegada=chegada)
+        boleias = Boleia.objects.filter(partida__iexact=partida, chegada__iexact=chegada)
     else:
         if partida:
-            boleias = Boleia.objects.filter(partida=partida)
+            boleias = Boleia.objects.filter(partida__iexact=partida)
         else:
             if chegada:
-                boleias = Boleia.objects.filter(chegada=chegada)
+                boleias = Boleia.objects.filter(chegada__iexact=chegada)
 
             else:
                 # Fetch all Boleia objects
