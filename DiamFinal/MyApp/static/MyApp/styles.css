@@ -10,6 +10,24 @@ body{
     font-family: "Candara";
     min-height: 100vh;
 }
+
+a{
+    text-decoration: none;
+}
+
+*::-webkit-scrollbar {
+    width: 15px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: #f5f5dc;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #273036;
+    border-radius: 2px;
+    border: 0px solid #ffffff;
+  }
 /* nav bar*/
 nav{
     position: fixed;
@@ -104,6 +122,12 @@ transform: translate(-50%, -50%) rotate(-225deg);
 
 .off-screen-menu a{
     font-size: 2.5rem;
+    color: #273036;
+}
+
+.off-screen-menu a:hover{
+    color: #000000;
+
 }
 
 /* hero section*/
@@ -176,20 +200,30 @@ button:hover{
      text-shadow: 5px 0px 5px rgba(255,255,255,.60);
 }
 
-/* blop */
+
 #blop{
-     width: 150px;
-    height: 150px;
+     width: 350px;
+    height: 350px;
     position: absolute;
-    top: 50%;
-    right: 8%;
+    top: 45%;
+    right: 3%;
 }
 
-
+#anunciar{
+    font-size: 2em;
+}
 #anunciar:hover{
     box-shadow: 0px 0px 5px rgba(66,66,66,.75);
      text-shadow: 5px 0px 5px rgba(255,255,255,.60);
 }
+
+/*blop animation*/
+
+
+.flip{
+    transform: rotate(180deg);
+}
+
 
 /* anuncios table*/
 
@@ -198,7 +232,7 @@ button:hover{
   margin: 0 auto;
    width: 500px;
     top: 45vh;
-    height:450px;
+    height:300px;
     overflow-y: auto;
 }
 

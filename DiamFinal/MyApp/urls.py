@@ -12,4 +12,5 @@ urlpatterns = [
     path('reset/', views.reset, name='reset'),
     path('aboutUs/', views.about_view, name='aboutUs'),
     path('information/', views.information_view, name='information'),
+    path('anunciar/', views.anunciar_view, name='anunciar'),
 ]
