@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration Page</title>
+</head>
+<body>
+{% block content %}
+<div class="register">
+
+  <div class="register-form">
+    <h2>Register</h2>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Register</button>
+    </form>
+  </div>
+{% endblock %}
+<a href="{% url 'MyApp:login' %}">
+    <button>Fazer Login</button>
+    </a>
+</div>
+</body>
+</html>
