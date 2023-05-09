@@ -46,3 +46,6 @@ def about_view(request):
 
 def information_view(request):
     return render(request, 'MyApp/information.html')
+
+def anunciar_view(request):
+    return render(request, 'MyApp/anunciar.html')

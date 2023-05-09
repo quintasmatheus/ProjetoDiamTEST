@@ -6,6 +6,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'MyApp/styles.css' %}" />
+    <script src="https://cdn.jsdelivr.net/npm/kute.js@2.2.2/dist/kute.min.js"></script>
 </head>
 <body>
     <div class="off-screen-menu">
@@ -36,10 +37,10 @@
     <section class="searchBar">
     <form id="searchForm" class="searchBar" action="{% url 'MyApp:search' %}" method="get">
         <label class="search_label" for="partida">Local de Partida:</label>
-        <input class="search_inputs" type="text" id="partida" name="partida"><br><br>
+        <input class="search_inputs" type="text" id="partida" name="partida" autocomplete="off"><br><br>
 
         <label class="search_label" for="chegada">Local de Chegada:</label>
-        <input class="search_inputs" type="text" id="chegada" name="chegada"><br><br>
+        <input class="search_inputs" type="text" id="chegada" name="chegada" autocomplete="off"><br><br>
 
             <button id="search_button" type="submit">Pesquisar</button>
             <button id="reset_button" type="submit">Reset</button>
@@ -82,14 +83,42 @@
 </section>
 
  <!--colocar extends nas outras páginas, na primeira linha do html -->
-    <svg id="blop" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-  <g>
-    <path fill="#273036" d="M31.8,-42.6C43.3,-35.4,56.1,-28.9,66.5,-16.9C76.9,-4.8,85,12.7,78.2,22.8C71.3,32.9,49.6,35.6,34,35.5C18.5,35.5,9.3,32.7,-5.1,39.7C-19.4,46.7,-38.9,63.5,-51.6,62.6C-64.2,61.8,-70.1,43.2,-68.5,27.2C-66.9,11.2,-57.7,-2.3,-49.5,-12.5C-41.2,-22.6,-33.8,-29.5,-25.7,-37.8C-17.6,-46.2,-8.8,-56,0.7,-57C10.1,-57.9,20.3,-49.9,31.8,-42.6Z" transform="translate(100 100)" />
-    <a href="#">
-      <text id="anunciar" x="50" y="110" fill="#F5F5DC">Anunciar Boleia</text>
-    </a>
-  </g>
-</svg>
+<!--    <svg id="blop" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">-->
+<!--  <g>-->
+<!--    <path fill="#273036" d="M31.8,-42.6C43.3,-35.4,56.1,-28.9,66.5,-16.9C76.9,-4.8,85,12.7,78.2,22.8C71.3,32.9,49.6,35.6,34,35.5C18.5,35.5,9.3,32.7,-5.1,39.7C-19.4,46.7,-38.9,63.5,-51.6,62.6C-64.2,61.8,-70.1,43.2,-68.5,27.2C-66.9,11.2,-57.7,-2.3,-49.5,-12.5C-41.2,-22.6,-33.8,-29.5,-25.7,-37.8C-17.6,-46.2,-8.8,-56,0.7,-57C10.1,-57.9,20.3,-49.9,31.8,-42.6Z" transform="translate(100 100)" />-->
+<!--    <a href="{% url 'MyApp:anunciar' %}">-->
+<!--      <text id="anunciar" x="50" y="110" fill="#F5F5DC">Anunciar Boleia</text>-->
+<!--    </a>-->
+<!--  </g>-->
+<!--</svg>-->
+    <div class="spacer layer2 flip"></div>
+    <section class="blop_anim">
+        <svg id="blop" viewBox="0 0 900 600" width="900" height="600" xmlns="http://www.w3.org/2000/svg"
+             xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
+            <g transform="translate(402.57248813454015 309.19142559317913)">
+                <path id="blop1" d="M129.2 -132.9C177.5 -113.5 233.5 -82.3 256.6 -33.2C279.6 16 269.7 83 227.9 109.1C186 135.2 112.3 120.5 56.8 129C1.3 137.5 -36 169.3 -71.8 168.7C-107.7 168.1 -142.2 135 -158.5 96.5C-174.9 57.9 -173.1 13.9 -173.6 -38.8C-174 -91.4 -176.7 -152.6 -148.1 -175.4C-119.6 -198.2 -59.8 -182.6 -9.6 -171.1C40.5 -159.6 81 -152.2 129.2 -132.9"
+                      fill="#273036"></path>
+                 <a id="anunciar" href="{% url 'MyApp:anunciar' %}">
+                    <text  x="-90" y="0" fill="#F5F5DC">Anunciar Boleia
+                    </text>
+                </a>
+            </g>
+            <g transform="translate(462.7996808603914 291.7726424536017)" style="visibility: hidden">
+        <path id="blop2" d="M168.6 -187.1C208.7 -167.3 224.5 -104.9 208.6 -57.2C192.7 -9.5 145.1 23.4 113.4 53.6C81.8 83.9 66.2 111.5 34.3 145.2C2.4 178.9 -45.8 218.6 -80 210.3C-114.1 201.9 -134.1 145.5 -165.6 94.1C-197 42.7 -239.8 -3.6 -240.3 -49.5C-240.7 -95.5 -198.8 -141.2 -151.7 -159.7C-104.6 -178.3 -52.3 -169.6 6 -176.8C64.3 -183.9 128.6 -206.9 168.6 -187.1"
+              fill="#273036"></path>
+            </g>
+
+        </svg>
+        <script>
+            const tween = KUTE.fromTo(
+                '#blop1',{path: '#blop1'},
+                {path: '#blop2'},
+                {repeat: 999, duration: 2000, yoyo: true}
+            )
+            tween.start()
+        </script>
+    </section>
+    <div class="spacer layer2"></div>
 
 {% endblock %}
 <script src="{% static 'MyApp/scripts.js' %}" type="application/javascript"></script>
