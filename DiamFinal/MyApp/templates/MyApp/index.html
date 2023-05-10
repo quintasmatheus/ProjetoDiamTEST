@@ -20,9 +20,26 @@
         <h1 id="titulo">UniRide</h1>
 
         <section class="login_OR_register">
-            <button class="butoes_nav" id="login"> LOGIN</button>
-            <button class="butoes_nav" id="register">REGISTER</button>
+             <a href="{% url 'MyApp:login' %}">
+                <button class="butoes_nav" id="login"> LOGIN</button>
+            </a>
+            <a href="{% url 'MyApp:register' %}">
+                <button class="butoes_nav" id="register">REGISTER</button>
+            </a>
         </section>
+
+<!--        {% if not user.is_authenticated %}-->
+<!--        <section class="login_OR_register">-->
+<!--            <a href="{% url 'MyApp:login' %}">-->
+<!--                <button class="butoes_nav" id="login"> LOGIN</button>-->
+<!--            </a>-->
+<!--            <a href="{% url 'MyApp:register' %}">-->
+<!--                <button class="butoes_nav" id="register">REGISTER</button>-->
+<!--            </a>-->
+<!--        </section>-->
+<!--    {% endif %}-->
+
+
     </svg>
 
     <div class="hamburger-menu">
