@@ -13,47 +13,17 @@
         <a href="{% url 'MyApp:aboutUs' %}">About Us</a>
         <a href="{% url 'MyApp:information' %}">Information</a>
     </div>
-
 <nav>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 250">
         <path fill="#273036" fill-opacity="1" d="M0,192L26.7,181.3C53.3,171,107,149,160,154.7C213.3,160,267,192,320,197.3C373.3,203,427,181,480,154.7C533.3,128,587,96,640,112C693.3,128,747,192,800,213.3C853.3,235,907,213,960,192C1013.3,171,1067,149,1120,154.7C1173.3,160,1227,192,1280,197.3C1333.3,203,1387,181,1413,170.7L1440,160L1440,0L1413.3,0C1386.7,0,1333,0,1280,0C1226.7,0,1173,0,1120,0C1066.7,0,1013,0,960,0C906.7,0,853,0,800,0C746.7,0,693,0,640,0C586.7,0,533,0,480,0C426.7,0,373,0,320,0C266.7,0,213,0,160,0C106.7,0,53,0,27,0L0,0Z"></path>
-        </svg>
 
-      <a href="{% url 'MyApp:index' %}">
-            <h1 id="titulo">UniRide</h1>
-        </a>
+        <h1 id="titulo">UniRide</h1>
 
         <section class="login_OR_register">
-            {% if not user.is_authenticated %}
-             <a href="{% url 'MyApp:login' %}">
-                <button class="butoes_nav" id="login"> LOGIN</button>
-            </a>
-            <a href="{% url 'MyApp:register' %}">
-                <button class="butoes_nav" id="register">REGISTER</button>
-            </a>
-            {% else %}
-
-            <a href="{% url 'MyApp:logout' %}">
-                <button class="butoes_nav" id="logout">LOGOUT</button>
-            </a>
-
-            <a href="{% url 'MyApp:user_info' %}">
-                <button class="butoes_nav" id="user_info">{{ user.username }}</button>
-            </a>
-            {% endif %}
+            <button class="butoes_nav" id="login"> LOGIN</button>
+            <button class="butoes_nav" id="register">REGISTER</button>
         </section>
-<!--        {% if not user.is_authenticated %}-->
-<!--        <section class="login_OR_register">-->
-<!--            <a href="{% url 'MyApp:login' %}">-->
-<!--                <button class="butoes_nav" id="login"> LOGIN</button>-->
-<!--            </a>-->
-<!--            <a href="{% url 'MyApp:register' %}">-->
-<!--                <button class="butoes_nav" id="register">REGISTER</button>-->
-<!--            </a>-->
-<!--        </section>-->
-<!--    {% endif %}-->
-
-
+    </svg>
 
     <div class="hamburger-menu">
         <div class="ham-bar bar-top"></div>
@@ -84,7 +54,7 @@
         <table>
             <thead>
                 <tr>
-                    <th>User</th>
+                   <!-- <th>User</th> -->
                     <th>Partida</th>
                     <th>Chegada</th>
                     <th>Horário</th>
@@ -96,17 +66,13 @@
             <tbody>
                 {% for boleia in boleias %}
                     <tr>
-                         <td>{{ boleia.user }}</td>
-                         <td>{{ boleia.partida }}</td>
+                       <!--  <td>{{ boleia.user }}</td> -->
+                        <td>{{ boleia.partida }}</td>
                         <td>{{ boleia.chegada }}</td>
                         <td>{{ boleia.horario }}</td>
                         <td>{{ boleia.preco }}</td>
                         <td>{{ boleia.vagas }}</td>
-                        <td>
-                            <a href="{% url 'MyApp:detalhes' boleia.id %}">
-                               🚘
-                            </a>
-                        </td>
+                        <td>{{ boleia.detalhes }}</td>
                     </tr>
                 {% endfor %}
             </tbody>
