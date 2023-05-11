@@ -103,7 +103,29 @@ window.addEventListener('resize', ajustarAlturaTabela);
 
 
 //////////////////////////////////////////////////////////////////////
+// error message no formulário de anunciar boleias
 
+document.getElementById('anunciar-form').addEventListener('submit', function(event) {
+    var vagasInput = document.getElementById('vagas');
+    var precoInput = document.getElementById('preco');
+    var vagasValue = vagasInput.value;
+    var precoValue = precoInput.value;
 
+    if (!isNumeric(vagasValue)) {
+      event.preventDefault(); // Impede o envio do formulário
+      alert('Coloque um valor numérico para as vagas.');
+      vagasInput.focus();
+      return false;
+    }
 
+    if (!isNumeric(precoValue)) {
+      event.preventDefault(); // Impede o envio do formulário
+      alert('Coloque um valor numérico para o preço.');
+      precoInput.focus();
+      return false;
+    }
+  });
 
+  function isNumeric(value) {
+    return !isNaN(parseFloat(value)) && isFinite(value);
+  }

@@ -22,6 +22,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import RegistrationForm
 from .forms import BoleiaForm
 
+
 from django.contrib.auth import logout
 from django.contrib.auth.models import User
 
@@ -100,13 +101,10 @@ from django.contrib.auth.models import User
 
 #@login_required(login_url='/MyApp/login')
 def index(request):
-    # consulta a base de dados para obter as boleias
     boleias = Boleia.objects.all()
-
-    # renderiza a página HTML com as boleias e outros dados de contexto
     template = loader.get_template('MyApp/index.html')
     context = {'boleias': boleias}
-    return HttpResponse(template.render(context, request))
+    return render(request, 'MyApp/index.html', context)
 
 
 def search(request):
@@ -159,7 +157,6 @@ def anunciar_view(request):
             return HttpResponseRedirect(reverse('MyApp:index'))
     else:
         form = BoleiaForm()
-
     return render(request, 'MyApp/anunciar.html', {'form': form})
 
 def detalhes(request, boleia_id):
