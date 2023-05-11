@@ -38,7 +38,7 @@ nav{
 
 #titulo {
   position: absolute;
-  top: 2vh;
+  top: 3vh;
   left: 90vh;
   color: beige;
   font-size: 5rem;
@@ -48,15 +48,18 @@ nav{
 .login_OR_register{
     position: absolute;
     top: 8vh;
-    left: 85%;
+    left: 83%;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 15px;
 }
 
-.butoes_nav{
+/*#logout{*/
+/*position: absolute;*/
+/*    top: -2vh;*/
+/*    right: -10vw;*/
+/*}*/
 
-}
 /*animated hamburger animation */
 .hamburger-menu{
     height: 100px;
@@ -309,7 +312,7 @@ button:hover{
             margin-left: 40% ;
         }
 
-       .register-form {
+       .register-form, .anunciar-form {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -326,13 +329,13 @@ button:hover{
   width: 100%;
 }
 
-.register-form .form-group {
+.register-form .form-group , .anunciar-form .form-group{
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-.register-form label {
+.register-form label , .anunciar-form  label{
   width: 150px;
   text-align: right;
     padding: 10px;
@@ -340,7 +343,9 @@ button:hover{
 
 .register-form input[type="text"],
 .register-form input[type="password"],
-.register-form input[type="email"] {
+.register-form input[type="email"], .anunciar-form input[type="text"],
+.anunciar-form input[type="password"],
+.anunciar-form input[type="email"] {
   flex: 1;
   padding: 10px;
   border: none;
@@ -348,7 +353,7 @@ button:hover{
   background-color: beige;
 }
 
-.register-form input[type="submit"] {
+.register-form input[type="submit"], .anunciar-form input[type="submit"] {
   background-color: #273036;
   color: beige;
   padding: 10px 20px;
@@ -361,3 +366,16 @@ button:hover{
     margin: 10px 10px 10px 40%;
             /*margin-left: 40% ;*/
         }
+
+.aboutUs{
+   display: flex;
+    flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 40vh;
+    text-align: center;
+    max-width: 50vw;
+    position: absolute;
+    top: 30vh;
+    left: 25vw;
+}
