@@ -189,18 +189,40 @@ def logout_view(request):
     return HttpResponseRedirect(reverse('MyApp:login'))
 
 # Register View
+# def register_view(request):
+#     if request.method == 'POST':
+#         form = RegistrationForm(request.POST)
+#         if form.is_valid():
+#             car_brand = form.cleaned_data.get('car_brand')
+#             car_model = form.cleaned_data.get('car_model')
+#             if form.is_valid():
+#                 form.save()
+#     else:
+#         form = RegistrationForm()
+#     return render(request, 'MyApp/register.html', {'form': form})
+
 def register_view(request):
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
         if form.is_valid():
-            car_brand = form.cleaned_data.get('car_brand')
-            car_model = form.cleaned_data.get('car_model')
-            if form.is_valid():
+            username = request.POST['username']
+            email = request.POST['email']
+            print(email)
+            print(username)
+            if User.objects.filter(email=email).exists():
+                return render(request, 'MyApp/register.html', {'register_error1': "Email already in use"})
+            else:
                 form.save()
+                return HttpResponseRedirect(reverse('MyApp:index'))
+        else:
+            username = request.POST['username']
+            email = request.POST['email']
+            if User.objects.filter(email=email).exists():
+                return render(request, 'MyApp/register.html', {'register_error1': "Username and email already in use"})
+            return render(request,'MyApp/register.html', {'register_error1': "Username already taken"})
     else:
         form = RegistrationForm()
     return render(request, 'MyApp/register.html', {'form': form})
-
 
 # def register_view(request):
 #     if request.method == 'POST':
@@ -209,17 +231,23 @@ def register_view(request):
 #             username = form.cleaned_data.get('username')
 #             email = form.cleaned_data.get('email')
 #
-#             # Check if username or email already exists in the database
+#             # Check if username or email already exists
 #             if User.objects.filter(username=username).exists():
-#                 form.add_error('username', 'Username already exists.')
+#                 # Username already exists
+#                 messages.error(request, 'Username already exists.')
 #             elif User.objects.filter(email=email).exists():
-#                 form.add_error('email', 'Email already exists.')
+#                 # Email already exists
+#                 messages.error(request, 'Email already exists.')
 #             else:
 #                 form.save()
 #                 return HttpResponseRedirect(reverse('MyApp:index'))
 #     else:
 #         form = RegistrationForm()
-#     return render(request, 'MyApp/register.html', {'form': form})
+#
+#     # Get all error messages and pass them to the template
+#     error_messages = list(messages.get_messages(request))
+#     return render(request, 'MyApp/register.html', {'form': form, 'error_messages': error_messages})
+
 
 def user_info_view(request):
     user = request.user
