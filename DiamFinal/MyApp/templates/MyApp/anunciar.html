@@ -8,7 +8,7 @@
 {% block content %}
  <div class="anunciar-form">
   <h2>Anunciar Boleia</h2>
-  <form method="post">
+  <form id="anunciar-form" method="post">
     {% csrf_token %}
 
     <div class="form-group">
@@ -42,8 +42,6 @@
   </form>
 </div>
 
-</form>
-</div>
 {% endblock %}
 </body>
 </html>

@@ -5,10 +5,43 @@
 </head>
 <body>
 {% block content %}
-<div class="detalhes_boleia">
 
-</div>
+    <section class="detail">
+      <h1> Boleia de {{ boleia.partida }} para {{ boleia.chegada }} </h1>
+      <h2> Horário: {{ boleia.horario }} </h2>
 
+      <h2> Detalhes: </h2>
+      <h3> {{ boleia.detalhes }}</h3>
+
+      <h2> Motorista: </h2>
+      <h3> {{boleia.motorista}} </h3>
+
+      <h2> Preço: {{ boleia.preco }}</h2>
+      <h2> Vagas: {{ boleia.vagas }}</h2>
+
+      {% if request.user == boleia.motorista %}
+        {% if boleia.users.all.exists %}
+            <h2>Passageiros</h2>
+            <ul>
+            {% for passageiro in boleia.users.all %}
+            <li>{{ passageiro.username }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+      {% endif %}
+
+      {% if boleia.vagas > 0 %}
+      <form method="post">
+        {% csrf_token %}
+        <button type="submit">Reservar vaga</button>
+      </form>
+      {% else %}
+        <p>Não há mais vagas disponíveis nesta boleia.</p>
+      {% endif %}
+
+      {% if error_message %}
+        <p><strong>{{ error_message }}</strong></p>
+      {% endif %}
 {% endblock %}
 </body>
 </html>

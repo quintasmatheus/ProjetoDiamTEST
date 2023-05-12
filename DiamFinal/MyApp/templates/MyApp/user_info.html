@@ -5,7 +5,46 @@
 </head>
 <body>
 {% block content %}
-<h1>info</h1>
+ <section class="user_info">
+      <h1 id="username_user"> Perfil de : {{ request.user }} </h1>
+ </section>
+     <div class="user_tables">
+         <div class="anuncios_feitos">
+             <h1>Anúncios realizados:</h1>
+             <div id="anuncios_feitos_table">
+                 <ul class="anuncios_feitos_ul">
+                    {% if boleias %}
+                    {% for motorista in motorista %}
+                        <li>
+                                <span> {{ motorista.partida }} - {{ motorista.chegada}} -> {{ motorista.horario}}</span>
+                        </li>
+                    {% endfor %}
+                </ul>
+                 {% else %}
+                     <p style="text-align: center; font-size: 20px; margin-top: 1em; margin-bottom: 1em; position: absolute">Não existem boleias disponíveis.</p>
+                    {% endif %}
+
+             </div>
+         </div>
+
+     <div class="boleias_Im_In">
+         <h1>Vagas reservadas:</h1>
+         <div id="boleias_Im_In_table">
+            <ul class="boleias_Im_In_ul">
+                    {% if boleias %}
+                    {% for boleia in boleias %}
+                        <li>
+                                <span> {{ boleia.partida }} - {{ boleia.chegada}} -> {{ boleia.horario}}</span>
+                        </li>
+                    {% endfor %}
+                </ul>
+                 {% else %}
+                     <p style="text-align: center; font-size: 20px; margin-top: 1em; margin-bottom: 1em; position: absolute">Não existem boleias disponíveis.</p>
+                    {% endif %}
+         </div>
+     </div>
+     </div>
+
 {% endblock %}
 </body>
 </html>

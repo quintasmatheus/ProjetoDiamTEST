@@ -108,6 +108,7 @@ window.addEventListener('resize', ajustarAlturaTabela);
 document.getElementById('anunciar-form').addEventListener('submit', function(event) {
     var vagasInput = document.getElementById('vagas');
     var precoInput = document.getElementById('preco');
+
     var vagasValue = vagasInput.value;
     var precoValue = precoInput.value;
 
@@ -119,7 +120,7 @@ document.getElementById('anunciar-form').addEventListener('submit', function(eve
     }
 
     if (!isNumeric(precoValue)) {
-      event.preventDefault(); // Impede o envio do formulário
+      event.preventDefault();
       alert('Coloque um valor numérico para o preço.');
       precoInput.focus();
       return false;

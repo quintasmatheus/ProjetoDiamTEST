@@ -199,4 +199,12 @@ def register_view(request):
     return render(request, 'MyApp/register.html', {'form': form})
 
 def user_info_view(request):
-    return render(request, 'MyApp/user_info.html', {'user': request.user})
+    user = request.user
+    user_boleias = Boleia.objects.filter(users=user)
+    motorista = Boleia.objects.filter(motorista=user)
+    context = {
+        'user': user,
+        'boleias': user_boleias,
+        'motorista':motorista
+    }
+    return render(request, 'MyApp/user_info.html', context)
