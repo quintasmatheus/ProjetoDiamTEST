@@ -20,7 +20,8 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from .forms import RegistrationForm
-from .forms import BoleiaForm
+from .forms import BoleiaForm, EditBoleiaForm
+from django.contrib import messages
 
 
 from django.contrib.auth import logout
@@ -162,11 +163,13 @@ def anunciar_view(request):
 def detalhes(request, boleia_id):
     boleia = get_object_or_404(Boleia, pk=boleia_id)
     if request.method == 'POST':
-        boleia.vagas -= 1
-        boleia.users.add(request.user)
-        boleia.save()
+        if request.user not in boleia.users.all():  # Check if user is not already in the relationship
+            boleia.vagas -= 1
+            boleia.users.add(request.user)
+            boleia.save()
         return HttpResponseRedirect(reverse('MyApp:detalhes', args=(boleia_id,)))
     return render(request, 'MyApp/detalhe.html', {'boleia': boleia})
+
 
 def login_view(request):
     if request.method == 'POST':
@@ -198,16 +201,25 @@ def register_view(request):
         form = RegistrationForm()
     return render(request, 'MyApp/register.html', {'form': form})
 
-# def user_info_view(request):
-#     user = request.user
-#     user_boleias = Boleia.objects.filter(users=user)
-#     motorista = Boleia.objects.filter(motorista=user)
-#     context = {
-#         'user': user,
-#         'boleias': user_boleias,
-#         'motorista':motorista
-#     }
-#     return render(request, 'MyApp/user_info.html', context)
+
+# def register_view(request):
+#     if request.method == 'POST':
+#         form = RegistrationForm(request.POST)
+#         if form.is_valid():
+#             username = form.cleaned_data.get('username')
+#             email = form.cleaned_data.get('email')
+#
+#             # Check if username or email already exists in the database
+#             if User.objects.filter(username=username).exists():
+#                 form.add_error('username', 'Username already exists.')
+#             elif User.objects.filter(email=email).exists():
+#                 form.add_error('email', 'Email already exists.')
+#             else:
+#                 form.save()
+#                 return HttpResponseRedirect(reverse('MyApp:index'))
+#     else:
+#         form = RegistrationForm()
+#     return render(request, 'MyApp/register.html', {'form': form})
 
 def user_info_view(request):
     user = request.user
@@ -220,3 +232,31 @@ def user_info_view(request):
     }
 
     return render(request, 'MyApp/user_info.html',context)
+
+def editar_boleia(request, boleia_id):
+    boleia = get_object_or_404(Boleia, id=boleia_id, motorista=request.user)
+    if request.method == 'POST':
+
+        form = EditBoleiaForm(instance=boleia)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Boleia atualizada com sucesso.')
+            render(request, 'MyApp/detalhe.html', {'boleia': boleia})
+    else:
+        form = EditBoleiaForm(instance=boleia)
+    return render(request, 'MyApp/anunciar.html', {'form': form})
+
+def cancelar_vaga(request, boleia_id, user_id):
+    boleia = get_object_or_404(Boleia, pk=boleia_id)
+    user = get_object_or_404(User, pk=user_id)
+    if user in boleia.users.all():  # Check if user is in the relationship
+        boleia.users.remove(user)
+        boleia.vagas += 1
+        boleia.save()
+    return render(request, 'MyApp/detalhe.html', {'boleia': boleia})
+
+def remover_boleia(request, boleia_id):
+    boleia = get_object_or_404(Boleia, pk=boleia_id)
+    boleia.delete()
+    return HttpResponseRedirect(reverse('MyApp:user_info'))
+

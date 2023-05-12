@@ -82,24 +82,24 @@ hamMenu.addEventListener('click', ()=>{
 } )
 
 //////////////////////////////////////////////////////////////////////
-const table = document.querySelector('#anuncios_table table');
-const tbody = document.querySelector('#anuncios_table tbody');
-
-// Função para ajustar a altura da tabela
-function ajustarAlturaTabela() {
-  if (table && tbody) {
-    // Altura da tabela é a altura do tbody
-    const alturaTabela = tbody.offsetHeight;
-    // Ajusta a altura da tabela
-    table.style.height = `${alturaTabela}px`;
-  }
-}
-
-// Chama a função quando a página carrega
-window.addEventListener('load', ajustarAlturaTabela);
-
-// Chama a função sempre que a página é redimensionada
-window.addEventListener('resize', ajustarAlturaTabela);
+// const table = document.querySelector('#anuncios_table table');
+// const tbody = document.querySelector('#anuncios_table tbody');
+//
+// // Função para ajustar a altura da tabela
+// function ajustarAlturaTabela() {
+//   if (table && tbody) {
+//     // Altura da tabela é a altura do tbody
+//     const alturaTabela = tbody.offsetHeight;
+//     // Ajusta a altura da tabela
+//     table.style.height = `${alturaTabela}px`;
+//   }
+// }
+//
+// // Chama a função quando a página carrega
+// window.addEventListener('load', ajustarAlturaTabela);
+//
+// // Chama a função sempre que a página é redimensionada
+// window.addEventListener('resize', ajustarAlturaTabela);
 
 
 //////////////////////////////////////////////////////////////////////

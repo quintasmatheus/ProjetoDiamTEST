@@ -7,6 +7,17 @@
 {% block content %}
 
     <section class="detail">
+    <div class="butoes_detail">
+        {% if request.user == boleia.motorista %}
+        <a href="{% url 'MyApp:editar_boleia' boleia.id %}">
+            <button type="submit">Editar Boleia</button>
+        </a>
+
+        <a href="{% url 'MyApp:remover_boleia' boleia.id %}">
+            <button type="submit">Remover Boleia</button>
+        </a>
+      {% endif %}
+    </div>
       <h1> Boleia de {{ boleia.partida }} para {{ boleia.chegada }} </h1>
       <h2> Horário: {{ boleia.horario }} </h2>
 
@@ -16,6 +27,9 @@
       <h2> Motorista: </h2>
       <h3> {{boleia.motorista}} </h3>
 
+        <h2> Email do motorista: </h2>
+      <h3> {{boleia.motorista.email}} </h3>
+
       <h2> Preço: {{ boleia.preco }}</h2>
       <h2> Vagas: {{ boleia.vagas }}</h2>
 
@@ -24,19 +38,34 @@
             <h2>Passageiros</h2>
             <ul>
             {% for passageiro in boleia.users.all %}
-            <li>{{ passageiro.username }}</li>
+            <li>{{ passageiro.username }} - {{ passageiro.first_name }} {{ passageiro.last_name }}</li>
             {% endfor %}
             </ul>
+        {% else %}
+            <h3>Ainda não há vagas reservadas.</h3>
         {% endif %}
       {% endif %}
 
+      {% if not request.user == boleia.motorista %}
       {% if boleia.vagas > 0 %}
-      <form method="post">
+      <form method="post" action="{% url 'MyApp:detalhes' boleia_id=boleia.id %}">
         {% csrf_token %}
         <button type="submit">Reservar vaga</button>
       </form>
       {% else %}
         <p>Não há mais vagas disponíveis nesta boleia.</p>
+      {% endif %}
+      {% endif %}
+
+      {% if boleia.users.all.exists %}
+        {% for passageiro in boleia.users.all %}
+             {% if request.user == passageiro %}
+                <form method="post" action="{% url 'MyApp:cancelar_vaga' boleia_id=boleia.id user_id=user.id %}">
+                {% csrf_token %}
+                    <button type="submit">Cancelar reserva from {{ request.user.username }}</button>
+                </form>
+             {% endif %}
+        {% endfor %}
       {% endif %}
 
       {% if error_message %}

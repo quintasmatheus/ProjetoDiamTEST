@@ -11,7 +11,7 @@
 <body>
     <div class="off-screen-menu">
         <a href="{% url 'MyApp:aboutUs' %}">About Us</a>
-        <a href="{% url 'MyApp:information' %}">Information</a>
+<!--        <a href="{% url 'MyApp:information' %}">Information</a>-->
     </div>
 
 <nav>
@@ -132,10 +132,17 @@
             <g transform="translate(402.57248813454015 309.19142559317913)">
                 <path id="blop1" d="M129.2 -132.9C177.5 -113.5 233.5 -82.3 256.6 -33.2C279.6 16 269.7 83 227.9 109.1C186 135.2 112.3 120.5 56.8 129C1.3 137.5 -36 169.3 -71.8 168.7C-107.7 168.1 -142.2 135 -158.5 96.5C-174.9 57.9 -173.1 13.9 -173.6 -38.8C-174 -91.4 -176.7 -152.6 -148.1 -175.4C-119.6 -198.2 -59.8 -182.6 -9.6 -171.1C40.5 -159.6 81 -152.2 129.2 -132.9"
                       fill="#273036"></path>
+                {% if user.is_authenticated %}
                  <a id="anunciar" href="{% url 'MyApp:anunciar' %}">
                     <text  x="-90" y="0" fill="#F5F5DC">Anunciar Boleia
                     </text>
                 </a>
+                {% else %}
+                  <a id="anunciar" href="{% url 'MyApp:login' %}">
+                    <text  x="-90" y="0" fill="#F5F5DC">Anunciar Boleia
+                    </text>
+                </a>
+                {% endif %}
             </g>
             <g transform="translate(462.7996808603914 291.7726424536017)" style="visibility: hidden">
         <path id="blop2" d="M168.6 -187.1C208.7 -167.3 224.5 -104.9 208.6 -57.2C192.7 -9.5 145.1 23.4 113.4 53.6C81.8 83.9 66.2 111.5 34.3 145.2C2.4 178.9 -45.8 218.6 -80 210.3C-114.1 201.9 -134.1 145.5 -165.6 94.1C-197 42.7 -239.8 -3.6 -240.3 -49.5C-240.7 -95.5 -198.8 -141.2 -151.7 -159.7C-104.6 -178.3 -52.3 -169.6 6 -176.8C64.3 -183.9 128.6 -206.9 168.6 -187.1"
