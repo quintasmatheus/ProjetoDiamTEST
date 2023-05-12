@@ -68,6 +68,7 @@ nav{
     position: fixed;
     top: 1rem;
     cursor:pointer;
+
 }
 
 .ham-bar{
@@ -80,27 +81,33 @@ nav{
     left: 50%;
     transform: translate(-50%, -50%);
     transition:transform .6s, opacity .8s, top .6s;
+
 }
 
 .bar-top{
 top: 25%;
+
 }
 .bar-bottom{
 top: 75%;
+
 }
 
 .hamburger-menu.active .bar-top{
 transform: translate(-50%, -50%) rotate(-315deg);
     background-color:beige;
     top: 50%;
+
 }
 .hamburger-menu.active .bar-mid{
     opacity: 0;
+
 }
 .hamburger-menu.active .bar-bottom{
 transform: translate(-50%, -50%) rotate(-225deg);
      background-color: beige;
     top: 50%;
+
 }
 /* off screen animation*/
 .off-screen-menu{
@@ -109,7 +116,7 @@ transform: translate(-50%, -50%) rotate(-225deg);
     left: -20%;
      background-color: beige;
     height: 100vh;
-    width: 15%;
+    width: 12%;
     transition:left .5s;
     display: flex;
     flex-direction: column;
@@ -121,16 +128,16 @@ transform: translate(-50%, -50%) rotate(-225deg);
 
 .off-screen-menu.active{
     left: 0;
+
 }
 
 .off-screen-menu a{
-    font-size: 2.5rem;
+    font-size: 2rem;
     color: #273036;
 }
 
 .off-screen-menu a:hover{
-    color: #000000;
-
+    color: black;
 }
 
 /* hero section*/
@@ -442,20 +449,31 @@ button:hover{
 .user_tables{
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
-    width:100%;
+    justify-content:center;
+    width:50%;
+    left: 53vh;
     height: 55vh;
     position: absolute;
     top: 44%;
-    z-index: -1;
 }
+
+/*.user_tables{*/
+/*    display: flex;*/
+/*    flex-direction: row;*/
+/*    justify-content: center;*/
+/*    width: 85%;*/
+/*    height: 55vh;*/
+/*    position: absolute;*/
+/*    top: 44%;*/
+/*    margin-left: 8%;*/
+/*}*/
 
 .anuncios_feitos{
      display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-     width:30%;
+     width:60%;
     height: 55vh;
      border: 5px solid #273036;
   border-radius: 10px;
@@ -467,7 +485,7 @@ button:hover{
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-     width:30%;
+     width:60%;
     height: 55vh;
      border: 5px solid #273036;
   border-radius: 10px;
@@ -476,4 +494,13 @@ button:hover{
 .boleias_Im_In_ul li, .anuncios_feitos_ul li{
     font-size: 1.1em;
     list-style: none;
+    border-bottom: 1px solid beige;
+}
+
+.boleias_Im_In_ul li a, .anuncios_feitos_ul li a{
+    color:#273036;
+}
+
+.boleias_Im_In_ul li a:hover, .anuncios_feitos_ul li a:hover{
+    color:beige;
 }

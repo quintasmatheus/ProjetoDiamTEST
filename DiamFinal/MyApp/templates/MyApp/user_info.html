@@ -13,15 +13,17 @@
              <h1>Anúncios realizados:</h1>
              <div id="anuncios_feitos_table">
                  <ul class="anuncios_feitos_ul">
-                    {% if boleias %}
-                    {% for motorista in motorista %}
+                   {% if motoristas %}
+                    {% for motorista in motoristas %}
                         <li>
-                                <span> {{ motorista.partida }} - {{ motorista.chegada}} -> {{ motorista.horario}}</span>
+                                <a href="{% url 'MyApp:detalhes' motorista.id %}">
+                                <span> {{ motorista.partida }} - {{ motorista.chegada}}</span>
+                                </a>
                         </li>
-                    {% endfor %}
+                {%endfor%}
                 </ul>
                  {% else %}
-                     <p style="text-align: center; font-size: 20px; margin-top: 1em; margin-bottom: 1em; position: absolute">Não existem boleias disponíveis.</p>
+                     <p>Não existem boleias disponíveis.</p>
                     {% endif %}
 
              </div>
@@ -34,12 +36,15 @@
                     {% if boleias %}
                     {% for boleia in boleias %}
                         <li>
-                                <span> {{ boleia.partida }} - {{ boleia.chegada}} -> {{ boleia.horario}}</span>
+                                <a href="{% url 'MyApp:detalhes' boleia.id %}">
+                                    <span> {{ boleia.partida }} - {{ boleia.chegada}} </span>
+                                </a>
+
                         </li>
                     {% endfor %}
                 </ul>
                  {% else %}
-                     <p style="text-align: center; font-size: 20px; margin-top: 1em; margin-bottom: 1em; position: absolute">Não existem boleias disponíveis.</p>
+                    <p>Não existem boleias disponíveis.</p>
                     {% endif %}
          </div>
      </div>
