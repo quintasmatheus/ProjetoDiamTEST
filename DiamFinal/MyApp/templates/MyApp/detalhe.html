@@ -30,7 +30,7 @@
         <h2> Email do motorista: </h2>
       <h3> {{boleia.motorista.email}} </h3>
 
-      <h2> Preço: {{ boleia.preco }}</h2>
+      <h2> Preço: {{ boleia.preco }}€</h2>
       <h2> Vagas: {{ boleia.vagas }}</h2>
 
       {% if request.user == boleia.motorista %}
@@ -50,7 +50,14 @@
       {% if boleia.vagas > 0 %}
       <form method="post" action="{% url 'MyApp:detalhes' boleia_id=boleia.id %}">
         {% csrf_token %}
+          {% if user.is_authenticated %}
         <button type="submit">Reservar vaga</button>
+          {% else %}
+          <button><a style="color: beige;" href="{% url 'MyApp:login' %}">
+                  Reservar vaga
+          </a></button>
+
+          {% endif %}
       </form>
       {% else %}
         <p>Não há mais vagas disponíveis nesta boleia.</p>
