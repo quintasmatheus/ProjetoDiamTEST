@@ -5,49 +5,60 @@
 </head>
 <body>
 {% block content %}
-
     <section class="detail">
     <div class="butoes_detail">
         {% if request.user == boleia.motorista or user.is_superuser %}
-        <a href="{% url 'MyApp:editar_boleia' boleia.id %}">
-            <button type="submit">Editar Boleia</button>
-        </a>
-
         <a href="{% url 'MyApp:remover_boleia' boleia.id %}">
             <button type="submit">Remover Boleia</button>
         </a>
       {% endif %}
     </div>
-      <h1> Boleia de {{ boleia.partida }} para {{ boleia.chegada }} </h1>
-      <h2> Horário: {{ boleia.horario }} </h2>
+        <ul class="detalhes_ul">
+            <li class="color1">
+                  <h1> Boleia de {{ boleia.partida }} para {{ boleia.chegada }} </h1>
+                  <h2> Horário: {{ boleia.horario }} </h2>
+            </li>
 
-      <h2> Detalhes: </h2>
+ <li class="color2">
+        <h2> Detalhes: </h2>
       <h3> {{ boleia.detalhes }}</h3>
+            </li>
 
-      <h2> Motorista: </h2>
+ <li class="color1">
+       <h2> Motorista: </h2>
       <h3> {{boleia.motorista}} </h3>
+            </li>
 
+ <li class="color2">
         <h2> Email do motorista: </h2>
       <h3> {{boleia.motorista.email}} </h3>
+            </li>
 
-      <h2> Preço: {{ boleia.preco }}€</h2>
-      <h2> Vagas: {{ boleia.vagas }}</h2>
+ <li class="color1">
+                 <h2> Preço: {{ boleia.preco }}€</h2>
+            </li>
+      <li class="color2">
+             <h2> Vagas: {{ boleia.vagas }}</h2>
+            </li>
 
-      {% if request.user == boleia.motorista or user.is_superuser %}
+ <li class="color1">
+     {% if request.user == boleia.motorista or user.is_superuser %}
         {% if boleia.users.all.exists %}
             <h2>Passageiros</h2>
             <ul>
-            {% for passageiro in boleia.users.all %}
-            <li>{{ passageiro.username }} - {{ passageiro.first_name }} {{ passageiro.last_name }}</li>
-            {% endfor %}
+                {% for passageiro in boleia.users.all %}
+                <li>{{ passageiro.username }} - {{ passageiro.first_name }} {{ passageiro.last_name }}</li>
+                {% endfor %}
             </ul>
-        {% else %}
+     {% else %}
             <h3>Ainda não há vagas reservadas.</h3>
         {% endif %}
-      {% endif %}
+     {% endif %}
+            </li>
+        </ul>
 
       {% if not request.user == boleia.motorista %}
-      {% if boleia.vagas > 0 %}
+        {% if boleia.vagas > 0 %}
       <form method="post" action="{% url 'MyApp:detalhes' boleia_id=boleia.id %}">
         {% csrf_token %}
           {% if user.is_authenticated %}
