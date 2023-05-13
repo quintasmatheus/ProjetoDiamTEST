@@ -8,7 +8,7 @@
 
     <section class="detail">
     <div class="butoes_detail">
-        {% if request.user == boleia.motorista %}
+        {% if request.user == boleia.motorista or user.is_superuser %}
         <a href="{% url 'MyApp:editar_boleia' boleia.id %}">
             <button type="submit">Editar Boleia</button>
         </a>
@@ -33,7 +33,7 @@
       <h2> Preço: {{ boleia.preco }}€</h2>
       <h2> Vagas: {{ boleia.vagas }}</h2>
 
-      {% if request.user == boleia.motorista %}
+      {% if request.user == boleia.motorista or user.is_superuser %}
         {% if boleia.users.all.exists %}
             <h2>Passageiros</h2>
             <ul>
